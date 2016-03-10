@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body, * {
+			margin: 0;
+			padding: 0;
+			font-size: 0;
+			background: #000000;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/6aXR-SL5L2o?autoplay=1" frameborder="0" allowfullscreen></iframe>
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/DRA8IzhC8vM?autoplay=1" frameborder="0" allowfullscreen></iframe>
+<script>
+	var ratio  = 560 / 530
+		videos = document.getElementsByTagName('iframe'),
+		total  = videos.length,
+		horizontal = true;
+
+	function resize ()
+	{
+		console.log(window.innerWidth, window.innerHeight);
+
+		var width = Math.floor(window.innerWidth / (horizontal ? 2 : 1)),
+			height = Math.floor(window.innerHeight / (horizontal ? 1 : 2));
+
+		for (var i = 0; i < total; i++) {
+			display(videos[i], width, height);
+		}
+	}
+
+	function display (video, width, height)
+	{
+		video.width = width;
+		video.height = height;
+
+		video.style.width = width + 'px';
+		video.style.height = height + 'px';
+
+		console.log(width, height);
+	}
+
+	window.addEventListener('resize', resize);
+	resize();
+</script>
+</body>
+</html>
